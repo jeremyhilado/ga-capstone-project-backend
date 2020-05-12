@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'apps.authentication',
+    'apps.api',
 ]
 
 MIDDLEWARE = [
@@ -72,14 +73,23 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'yelp_clone.wsgi.application'
 
+DB_PASSWORD = os.environ.get('PASSWORD')
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
 DATABASES = {
+    # 'default': {
+    #     'ENGINE': 'django.db.backends.sqlite3',
+    #     'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    # }
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'yelpclone',
+        'USER': 'Jeremy',
+        'PASSWORD': print(DB_PASSWORD),
+        'HOST': 'localhost',
+        'PORT': '',
     }
 }
 
