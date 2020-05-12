@@ -1,0 +1,1 @@
+web: gunicorn yelp_clone.wsgi --log-file -
